@@ -239,10 +239,10 @@ void TicketReviewApp::onViewItemDoubleClicked(QListWidgetItem *item)
         int currentStatus = tickets[ticketIndex].status;
         int newStatus;
         
-        if (currentStatus == 1) {
-            newStatus = 2;
-        } else if (currentStatus == 0 || currentStatus == 2) {
+        if (currentStatus == 2) {
             newStatus = 1;
+        } else if (currentStatus == 0 || currentStatus == 1) {
+            newStatus = 2;
         } else {
             return;
         }
