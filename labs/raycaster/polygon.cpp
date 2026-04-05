@@ -1,9 +1,8 @@
-// polygon.cpp
 #include "polygon.h"
 
 std::optional<QPointF> Polygon::intersectRay(const Ray& ray) const {
     std::optional<QPointF> closestPoint = std::nullopt;
-    double minT = 1.0; // Мы нормируем луч или используем длину
+    double minT = 1.0;
 
     QPointF p1 = ray.getBegin();
     QPointF p2 = ray.getEnd();

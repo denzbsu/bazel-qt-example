@@ -1,4 +1,3 @@
-// controller.cpp
 #include "controller.h"
 
 Polygon Controller::createLightArea(QPointF source) {
@@ -6,7 +5,6 @@ Polygon Controller::createLightArea(QPointF source) {
     std::vector<Ray> rays = castRays();
     intersectRays(rays);
     
-    // Сортируем лучи по углу для правильного построения полигона
     std::sort(rays.begin(), rays.end(), [](const Ray& a, const Ray& b) {
         return a.getAngle() < b.getAngle();
     });

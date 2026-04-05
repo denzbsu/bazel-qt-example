@@ -1,4 +1,3 @@
-// canvas.h
 #include <QWidget>
 #include <QMouseEvent>
 #include <QPainter>
@@ -10,7 +9,6 @@ public:
     enum Mode { Light, Polygons };
     Canvas(QWidget* parent = nullptr) : QWidget(parent), mode_(Polygons) {
         setMouseTracking(true);
-        // Граничный многоугольник (фиктивный)
         controller_.addPolygon(Polygon({{0,0}, {800,0}, {800,600}, {0,600}}));
     }
     
@@ -21,7 +19,6 @@ protected:
         QPainter painter(this);
         painter.setRenderHint(QPainter::Antialiasing);
         
-        // 1. Рисуем многоугольники
         painter.setPen(Qt::white);
         for (const auto& poly : controller_.getPolygons()) {
             const auto& v = poly.getVertices();
@@ -29,10 +26,8 @@ protected:
                 painter.drawLine(v[i], v[(i+1)%v.size()]);
         }
 
-        // 2. Рисуем свет (Задание 3: Полутени)
         if (mode_ == Light) {
-            // Создаем эффект полутени через 5 источников по кругу
-            QColor lightColor(255, 255, 150, 50); // Прозрачный желтый
+            QColor lightColor(255, 255, 150, 50);
             double offset = 3.0;
             QPointF center = controller_.getLightSource();
             QPointF sources[] = { 

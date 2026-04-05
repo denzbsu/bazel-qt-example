@@ -1,4 +1,3 @@
-// ray.h
 #ifndef RAY_H
 #define RAY_H
 
